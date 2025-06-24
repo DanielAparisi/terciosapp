@@ -1,12 +1,13 @@
 ---
 import SignInButton from "./SignInButton.astro"
+import SignUpButton from "./SignUpButton.astro"
 ---
 
 
 <header id="header" class="py-3 px-10 flex items-center fixed top-0 w-full justify-between z-40  text-white ">
     
     <div class=" flex flex-grow basis-0">
-        <img src="./tercioslogo.svg" class="" alt="">
+      
     </div>		
 
     <nav>
@@ -17,21 +18,14 @@ import SignInButton from "./SignInButton.astro"
             <li><a href="#">Patrocinadores</a></li>
         </ul>
     </nav>
-    <nav class=" flex flex-grow justify-end basis-0"> 
-        <ul class=" flex text-sm [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4  [&>li>a]:py-2  [&>li>a]:transition-colors [&>li>a]:duration-500" >
-          <li>
-              <button></button>
-          </li>
-          <li>
-               <button></button>
-          </li>
-        </ul>			
+    <nav id="social" class=" flex flex-grow justify-end basis-0"> 
+       
     </nav>
 
     <div id="menu-backdrop" 
     class={`
         absolute
-        bg-black/5 backdrop-blur-lg rounded 
+        bg-white/5 backdrop-blur-lg rounded 
         left-[var(--left)] top-[var(--top)] w-[var(--width)] h-[var(--height)] 
         transition-all duration-500 ease-in-out opacity-0 -z-10    
      `} >
