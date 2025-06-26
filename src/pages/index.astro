@@ -1,13 +1,19 @@
 ---
 
 import Menu from '../components/menu.astro';
-// Uncomment and update the path below if Welcome.astro exists elsewhere, or create the component in src/components.
+import Nosotros from '../components/nosotros.astro';
 import Layout from '../layouts/Layout.astro';
+import Banner from '../components/SectionBaner.astro'
+
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
 <Layout>
-	<Menu/>
+	<main class="px-2">
+		<Banner class=" py-44 pb-32">
+			<Nosotros/>
+		<Banner/>
+	</main>
 </Layout>
