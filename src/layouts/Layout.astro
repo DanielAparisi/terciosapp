@@ -1,21 +1,26 @@
 ---
- import './src/styles/global.css'
- import background from '../assets/background.svg';
-import Menu from '../components/menu.astro';
+import Header from '../components/Header.astro'
+import './src/styles/global.css'
+
 ---
 
 <!doctype html>
 <html lang="en">
 	<head>
+<link rel="icon" type="image/svg+xml" href="/fonts/tercioslogo.svg">
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
+		<title>LOS TERCIOS</title>
+	</head>	
 	<body>
-	<div class="absolute top-0 z-[-2] h-screen w-screen bg-neutral-950 bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(220,38,38,0.7),rgba(255,255,255,0))]"></div>
-		<Menu/>	
+		<div
+			class="absolute top-0 bottom-0 z-[-2] min-h-screen w-full bg-gray-50 dark:bg-gray-950
+			bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(217,216,255,0.5),rgba(255,255,255,0.9))]
+			dark:bg-[radial-gradient(ellipse_80%_80%_at_50%_-20%,rgba(120,119,198,0.3),rgba(255,255,255,0))]"
+    	>
+		<Header/>
 		<slot />
 	</body>
 </html>
@@ -27,13 +32,11 @@ import Menu from '../components/menu.astro';
 		width: 100%;
 		height: 100%;
 		box-sizing: border-box;
+		color: black;
 		font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 	}
 	
-	#container {
-		font-family: fuente1, Roboto, 'Helvetica Neue', 'Arial Nova', 'Nimbus Sans', Arial, sans-serif;
-		height: 100%;
-	}
+	
 	@font-face {
 		font-family: 'fuente1';
 		src: url('../../fonts/fuente1.woff2') format('woff2'),
