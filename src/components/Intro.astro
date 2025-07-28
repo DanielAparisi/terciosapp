@@ -2,12 +2,20 @@
 import Logo from "./logo.astro"
 ---
 
-<section id="Intro" class=" w-full lg:w-[740px] mx-auto pb-24 py-44  ">
-    <article>
-        <h1>Con el escudo en el pecho y el león al frente </h1>
-        <h2>Somos Los Tercios FC un Equipo de futbol ubicado en Guadalajara </h2>
-        <h2>Actualmente Participamos en la liga <strong>A+7</strong></h2>
-    </article>
-  
-    <Logo/>
+
+<section id="Intro" class="w-full h-screen flex flex-col md:flex-row items-center justify-center ">
+  <div class="flex-1 flex flex-col items-center justify-center p-8">
+
+    <h1 class="text-4xl md:text-5xl font-bold mb-4 text-center">Bienvenidos a Los Tercios</h1>
+    <p class="text-lg md:text-xl text-center max-w-xl">
+      Somos el equipo de fútbol <strong>Los Tercios</strong>, apasionados por el deporte, la amistad y la superación. ¡Únete a nuestra comunidad y vive la pasión del fútbol con nosotros!
+    </p>
+  </div>
+  <div class="flex-1 flex items-center justify-center h-1/2 md:h-full w-full">
+    <img 
+      class="w-screen h-screen object-cover rounded-[8px] shadow-lg max-h-[500px] md:max-h-full"
+      src="../../public/ImagenTerciosMain.webp" 
+      alt="Equipo de fútbol Los Tercios"
+    />
+  </div>
 </section>
