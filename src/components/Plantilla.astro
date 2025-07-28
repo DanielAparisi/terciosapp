@@ -1,73 +1,54 @@
 ---
-import { Players } from "../const/player.astro"
+import  { Players } from "../const/player.astro"
 import PlayerCard from "./PlayerCard.astro"
 
-const firstRow = Players.slice(0, 6)
-const leftRow = firstRow.slice(0, 3)
-const rightRow = firstRow.slice(3)
-const secondRow = Players.slice(6)
 ---
-
-<section id="Plantilla" class="relative flex min-h-screen w-full">
-  
-  <div class="group/hero relative flex w-full flex-col items-center p-8 text-center">
-    <div
-      id="landing"
-      class:list={[
-        'absolute top-0 flex w-full flex-col items-center py-16',
-        // Hide when hover/focus/focus-visible over a fighter card
-        'group-has-[a[data-fighter-card]:focus-visible]/hero:hidden group-has-[a[data-fighter-card]:focus]/hero:hidden group-has-[a[data-fighter-card]:hover]/hero:hidden',
-      ]}
-    >
-    <div class="flex items-center gap-4 mb-6">
-        <button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">24-25</button>
-        <h1 class="text-3xl font-bold">Nuestra Plantilla</h1>
+<section id="Plantilla" class="py-12 px-4">
+     <div class="flex items-center gap-4 mb-6 justify-center">
+        <h1 class="text-3xl font-bold"> PLANTILLA</h1>
     </div>
-</div>
-
-    <div class="relative flex h-full w-full max-w-6xl flex-col items-center justify-end gap-4 p-8">
-      <div class="flex w-full flex-wrap justify-between px-4">
-        <div class="flex flex-wrap justify-start gap-4">
-          {
-            leftRow.map(({ id, name }) => (
-              <PlayerCard
-                id={id}
-                name={name}
-                
-              />
-            ))
-          }
-        </div>
-        <div class="flex flex-wrap justify-end gap-4">
-          {
-            rightRow.map(({ id, name }) => (
-              <PlayerCard
-                id={id}
-                name={name}
-                
-              />
-            ))
-          }
-        </div>
-      </div>
-
-      <div class="flex flex-wrap justify-center gap-4 sm:justify-between">
+    <div class=" flex flex-col items-center gap-4 mb-6 justify-start">
+         <h3>DEFENSAS</h3>
         {
-          secondRow.map(({ id, name }) => (
-            <PlayerCard
-              id={id}
-              name={name}
-             
-            />
-          ))
+            Players.map(({id, name, role ="Defensa"}) => (
+                <article class="flex ">
+                   
+                    <PlayerCard id={id} name={name} role={role} />
+                </article>
+            ))
         }
-      </div>
     </div>
-  </div>
+    <div class=" flex items-center gap-4 mb-6 justify-start">
+        {
+            Players.map(({id, name, role ="Defensa"}) => (
+                <article class="flex flex-col">
+                    <h3>MedioCentros</h3>
+                    <PlayerCard id={id} name={name} role={role} />
+                </article>
+            ))
+        }
+    </div>
+    <div class=" flex items-center gap-4 mb-6 justify-start">
+        {
+            Players.map(({id, name, role ="Delanteros"}) => (
+                <article class="flex flex-col">
+                    <h3>Delanteros</h3>
+                    <PlayerCard id={id} name={name} role={role} />
+                </article>
+            ))
+        }
+    </div>
+    <div class=" flex flex-row">
+        {
+            Players.map(({id, name, role ="Defensa"}) => (
+                <article class="flex flex-col">
+                    <h3>Presidente</h3>
+                    <PlayerCard id={id} name={name} role={role} />
+                </article>
+            ))
+        }
+    </div>
+
 </section>
 
-<style>
-  .mask-fade-text {
-    mask-image: linear-gradient(to bottom, transparent 5%, black 6%, black 95%, transparent 100%);
-  }
-</style>
+
