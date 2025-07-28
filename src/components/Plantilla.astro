@@ -1,0 +1,24 @@
+---
+import { Players } from "../const/player.astro"
+---
+<section id="Plantilla " class=" py-12 px-4 ">
+     <div class="flex items-center gap-4 mb-6">
+    <button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">24-25</button>
+    <h1 class="text-3xl font-bold">Plantilla</h1>
+  </div>
+  <article class=" relative flex flex-col items-center justify-end p-8">
+        <div class=" flex flex-wrap justify-center g-2">
+            {
+                Players.map(({id,name}) =>{
+                    <a href="#" class=" inline-block transition hover:scale-125"  >
+                        <img 
+                            src={`/public/TeamImg/${id}.jpg`} 
+                            alt={name} 
+                            decoding="async">
+                        <img/>
+                    </a>
+                })
+            }
+        </div>
+  </article>
+</section>
