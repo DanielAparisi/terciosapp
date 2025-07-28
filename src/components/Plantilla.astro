@@ -2,17 +2,14 @@
 import { Players } from "../const/player.astro"
 import PlayerCard from "./PlayerCard.astro"
 
-
-
 const firstRow = Players.slice(0, 6)
 const leftRow = firstRow.slice(0, 3)
 const rightRow = firstRow.slice(3)
 const secondRow = Players.slice(6)
 ---
 
-<section class="relative flex min-h-screen w-full">
+<section id="Plantilla" class="relative flex min-h-screen w-full">
   
-
   <div class="group/hero relative flex w-full flex-col items-center p-8 text-center">
     <div
       id="landing"
