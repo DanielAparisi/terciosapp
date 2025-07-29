@@ -1,9 +1,9 @@
 ---
 import Mail from "./mail.astro";
-import Youtube from "./Youtube.astro"
+
 import Tiktok from "./Tiktok.astro"
 import Spotify from "./Spotify.astro"
-import Instagram from "./Instagram.astro"
+
 ---
 
 <footer class="bg-white rounded-lg shadow-sm dark:bg-gray-900 m-4">
@@ -32,10 +32,11 @@ import Instagram from "./Instagram.astro"
         </div>
         <hr class="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
          <article class="flex justify-center items-center gap-8 mb-2">
-            <Spotify/>
-            <Instagram/>
-            <Youtube/>
-            <Tiktok/>
+           <img class=" size-8 hover:scale-125" src="/public/youtube-color.svg" alt="Youtube">
+           <img class=" size-8 hover:scale-125" src="/public/instagram-1.svg" alt="Instagram">
+           <img class=" size-8 hover:scale-125" src="/public/tiktok-color.svg" alt="Tiktok">
+           <img class=" size-8 hover:scale-125" src="/public/spotify-color.svg" alt="Spotify">
         </article>
+        <button class="flex justify-center items-center text-center gap-8 mb-2">25-26</button>
     </div>
 </footer>

@@ -166,9 +166,6 @@
   }
 }
 
-
-
-
 @utility mask-fade-top {
   mask-image: linear-gradient(to bottom, white 0%, black 100%);
 }
