@@ -20,11 +20,11 @@ import '@fontsource-variable/onest';
 	  <meta name="description" content={description}>
       <title>{title}</title>
 	</head>	
-	<body>
+	<body class="pt-16 sm:pt-20">
 		<div class="fixed top-0 z-[-2] h-screen w-screen rotate-180 transform bg-white bg-[radial-gradient(60%_120%_at_50%_50%,hsla(0,0%,100%,0)_0,rgba(252,205,238,.5)_100%)]"></div>
-      <Header/>	
-      <slot />
-	</body>
+		<Header/>	
+    	<slot />
+</body>
 </html>
 <style is:global>
 
@@ -44,6 +44,7 @@ body {
 	margin: 0;
 	padding: 0;
 	border: 0 solid;
+	overflow-x: hidden;
 	
 }
 
