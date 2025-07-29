@@ -1,54 +1,54 @@
 ---
-import  { Players } from "../const/player.astro"
+import  { DEFENSAS, DELANTERO, MEDIOCENTRO, PORTERO, PRESIDENTE } from "../const/player.astro"
 import PlayerCard from "./PlayerCard.astro"
-
 ---
+
 <section id="Plantilla" class="py-12 px-4">
-     <div class="flex items-center gap-4 mb-6 justify-center">
+    <div class="flex items-center gap-4 mb-6 justify-center">
         <h1 class="text-3xl font-bold"> PLANTILLA</h1>
     </div>
-    <div class=" flex flex-col items-center gap-4 mb-6 justify-start">
-         <h3>DEFENSAS</h3>
-        {
-            Players.map(({id, name, role ="Defensa"}) => (
-                <article class="flex ">
-                   
+
+    <div class="mb-6">
+        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Portero</h3>
+        <div class="flex flex-row gap-4 justify-center">
+            {
+                PORTERO.map(({id, name, role }) => (
                     <PlayerCard id={id} name={name} role={role} />
-                </article>
-            ))
-        }
-    </div>
-    <div class=" flex items-center gap-4 mb-6 justify-start">
-        {
-            Players.map(({id, name, role ="Defensa"}) => (
-                <article class="flex flex-col">
-                    <h3>MedioCentros</h3>
-                    <PlayerCard id={id} name={name} role={role} />
-                </article>
-            ))
-        }
-    </div>
-    <div class=" flex items-center gap-4 mb-6 justify-start">
-        {
-            Players.map(({id, name, role ="Delanteros"}) => (
-                <article class="flex flex-col">
-                    <h3>Delanteros</h3>
-                    <PlayerCard id={id} name={name} role={role} />
-                </article>
-            ))
-        }
-    </div>
-    <div class=" flex flex-row">
-        {
-            Players.map(({id, name, role ="Defensa"}) => (
-                <article class="flex flex-col">
-                    <h3>Presidente</h3>
-                    <PlayerCard id={id} name={name} role={role} />
-                </article>
-            ))
-        }
+                ))
+            }
+        </div>
     </div>
 
+    <div class="mb-6">
+        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Defensas</h3>
+        <div class="flex flex-row gap-4 justify-center">
+            {
+                DEFENSAS.map(({id, name, role="Defensa"}) => (
+                    <PlayerCard id={id} name={name} role={role} />
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Mediocentros</h3>
+        <div class="flex flex-row gap-4 justify-center">
+            {
+                MEDIOCENTRO.map(({id, name, role="Mediocentro"}) => (
+                    <PlayerCard id={id} name={name} role={role} />
+                ))
+            }
+        </div>
+    </div>
+
+    <div class="mb-6">
+        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Delanteros</h3>
+        <div class="flex flex-row gap-4 justify-center">
+            {
+                DELANTERO.map(({id, name, role}) => (
+                    <PlayerCard id={id} name={name} role={role} />
+                ))
+            }
+        </div>
+    </div>
 </section>
-
-
