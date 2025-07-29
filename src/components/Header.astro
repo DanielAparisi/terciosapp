@@ -1,19 +1,31 @@
 ---
-
+let menuOpen = false;
 ---
 
-<header id="header" class=" py-3 px-10 flex items-center fixed top-0 w-full justify-center z-40  text-black   ">
-    
-    <nav class=" rounded-md bg-black/7 backdrop-blur-lg ">
-        <ul class=" flex text-sm [&>li>a]:text-current  [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4  [&>li>a]:py-2 [&>li>a]:transition-colors [&>li>a]:duration-500" >
-            <li><a href="#Equipaciones">Equipaciones</a></li>
-            <li><a href="#Plantilla">Plantilla</a></li>
-            <li><a href="#Historia">Historia</a></li>
-            <li><a href="#Patrocinadores">Patrocinadores</a></li>
-            <li><a href="#Footer">Contáctanos</a></li>
+<header id="header" class="py-3 px-4 sm:px-10 flex items-center fixed top-0 w-full justify-between z-40 text-black bg-white/80 backdrop-blur-lg shadow">
+    <div class="font-bold text-lg sm:text-xl text-red-800">Los Tercios</div>
+    <!-- Botón hamburguesa -->
+    <button 
+            class="sm:hidden flex flex-col justify-center items-center w-10 h-10 rounded focus:outline-none"
+            aria-label="Abrir menú"
+            id="menu-toggle"
+        >
+        <span class={`block h-0.5 w-6 bg-black mb-1 transition-all duration-300 ${menuOpen ? 'rotate-45 translate-y-2' : ''}`}></span>
+        <span class={`block h-0.5 w-6 bg-black mb-1 transition-all duration-300 ${menuOpen ? 'opacity-0' : ''}`}></span>
+        <span class={`block h-0.5 w-6 bg-black transition-all duration-300 ${menuOpen ? '-rotate-45 -translate-y-2' : ''}`}></span>
+    </button>
+    <!-- Menú de navegación -->
+    <nav class={`fixed sm:static top-16 left-0 w-full sm:w-auto bg-white/95 sm:bg-transparent shadow sm:shadow-none transition-all duration-300 z-50
+        ${menuOpen ? 'block' : 'hidden'} sm:flex`}>
+        <ul class="flex flex-col sm:flex-row text-base sm:text-sm [&>li>a]:text-current [&>li>a]:font-medium [&>li>a]:inline-block [&>li>a]:px-4 [&>li>a]:py-2 [&>li>a]:transition-colors [&>li>a]:duration-500">
+            <li><a href="#Equipaciones" onclick="closeMenu()">Equipaciones</a></li>
+            <li><a href="#Plantilla" onclick="closeMenu()">Plantilla</a></li>
+            <li><a href="#Historia" onclick="closeMenu()">Historia</a></li>
+            <li><a href="#Patrocinadores" onclick="closeMenu()">Patrocinadores</a></li>
+            <li><a href="#Footer" onclick="closeMenu()">Contáctanos</a></li>
         </ul>
     </nav>
-   
+
     <div id="menu-backdrop" 
     class={`
         absolute
@@ -25,9 +37,34 @@
 </header>
 
 
+
 <script>
     const listItem = document.querySelectorAll('#header li')
     const menuBackDrop = document.querySelector('#menu-backdrop') as HTMLElement
+    const menuToggle = document.getElementById('menu-toggle');
+    const navMenu = document.querySelector('nav');
+    let menuOpen = false;
+
+    function closeMenu() {
+        menuOpen = false;
+        if (navMenu) {
+            navMenu.classList.remove('block');
+            navMenu.classList.add('hidden');
+        }
+    }
+
+    if (menuToggle && navMenu) {
+        menuToggle.addEventListener('click', () => {
+            menuOpen = !menuOpen;
+            if (menuOpen) {
+                navMenu.classList.remove('hidden');
+                navMenu.classList.add('block');
+            } else {
+                navMenu.classList.remove('block');
+                navMenu.classList.add('hidden');
+            }
+        });
+    }
 
     listItem.forEach((item) => {
         item.addEventListener('mouseenter',() => {
