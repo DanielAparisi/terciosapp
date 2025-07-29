@@ -1,0 +1,34 @@
+---
+import PlayerCard from "../components/PlayerCard.astro";
+import Layout from "../layouts/Layout.astro";
+import { JUGADORES } from "../const/player.astro";
+
+// Exporta getStaticPaths para generar las rutas
+export async function getStaticPaths() {
+  return JUGADORES.map(player => ({
+    params: { id: player.id }
+  }));
+}
+
+// Obtén el id de la URL
+const { id } = Astro.params;
+
+// Busca el jugador por id
+const player = JUGADORES.find(p => p.id === id);
+---
+
+<Layout title="Detail" description="detalle de cada jugador">
+  <div class="flex flex-col items-center justify-center min-h-screen text-center">
+    {
+      player ? (
+        <PlayerCard id={player.id} name={player.name} role={player.role} />
+      ) : (
+        <p>Jugador no encontrado</p>
+      )
+    }
+    <h1 class="mt-4 text-2xl font-bold">{player?.name}</h1>
+    <h2 class="text-lg text-gray-600">{player?.role}</h2>
+    <strong class="mt-2">ID: {id}</strong>
+    <a href="/"><button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 cursor-pointer">Volver</button></a>
+  </div>
+</Layout>

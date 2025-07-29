@@ -51,4 +51,14 @@ import PlayerCard from "./PlayerCard.astro"
             }
         </div>
     </div>
+     <div class="mb-6">
+        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Presidente</h3>
+        <div class="flex flex-row gap-4 justify-center">
+            {
+                PRESIDENTE.map(({id, name, role}) => (
+                    <PlayerCard id={id} name={name} role={role} />
+                ))
+            }
+        </div>
+    </div>
 </section>
