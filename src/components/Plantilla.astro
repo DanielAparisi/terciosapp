@@ -3,14 +3,14 @@ import  { DEFENSAS, DELANTERO, MEDIOCENTRO, PORTERO, PRESIDENTE } from "../const
 import PlayerCard from "./PlayerCard.astro"
 ---
 
-<section id="Plantilla" class="py-12 px-4">
+<section id="Plantilla" class="py-12 px-2 sm:px-4">
     <div class="flex items-center gap-4 mb-6 justify-center">
          <h1 class="text-3xl font-bold text-red-800"> PLANTILLA</h1>
     </div>
 
     <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Portero</h3>
-        <div class="flex flex-row gap-4 justify-center">
+        <h3 class="mb-2 flex items-center justify-center text-red-800">Portero</h3>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {
                 PORTERO.map(({id, name, role }) => (
                     <PlayerCard id={id} name={name} role={role} />
@@ -20,8 +20,8 @@ import PlayerCard from "./PlayerCard.astro"
     </div>
 
     <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Defensas</h3>
-        <div class="flex flex-row gap-4 justify-center">
+        <h3 class="mb-2 flex items-center justify-center text-red-800">Defensas</h3>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {
                 DEFENSAS.map(({id, name, role="Defensa"}) => (
                     <PlayerCard id={id} name={name} role={role} />
@@ -31,8 +31,8 @@ import PlayerCard from "./PlayerCard.astro"
     </div>
 
     <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Mediocentros</h3>
-        <div class="flex flex-row gap-4 justify-center">
+        <h3 class="mb-2 flex items-center justify-center text-red-800">Mediocentros</h3>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {
                 MEDIOCENTRO.map(({id, name, role="Mediocentro"}) => (
                     <PlayerCard id={id} name={name} role={role} />
@@ -42,8 +42,8 @@ import PlayerCard from "./PlayerCard.astro"
     </div>
 
     <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Delanteros</h3>
-        <div class="flex flex-row gap-4 justify-center">
+        <h3 class="mb-2 flex items-center justify-center text-red-800">Delanteros</h3>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {
                 DELANTERO.map(({id, name, role}) => (
                     <PlayerCard id={id} name={name} role={role} />
@@ -52,8 +52,8 @@ import PlayerCard from "./PlayerCard.astro"
         </div>
     </div>
      <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800  ">Presidente</h3>
-        <div class="flex flex-row gap-4 justify-center">
+        <h3 class="mb-2 flex items-center justify-center text-red-800">Presidente</h3>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
             {
                 PRESIDENTE.map(({id, name, role}) => (
                     <PlayerCard id={id} name={name} role={role} />
