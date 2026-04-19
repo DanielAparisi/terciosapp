@@ -1,5 +1,5 @@
 ---
-const {name , id } = Astro.props
+const {name, id, role} = Astro.props
 ---
 <a href={`/${id}`} class="player-card">
   <div class="player-card-img">
@@ -7,41 +7,38 @@ const {name , id } = Astro.props
       src={`/${id}.png`}
       alt={name}
       decoding="async"
+      loading="lazy"
     />
+    <div class="player-card-overlay"></div>
   </div>
   <div class="player-card-info">
     <span class="player-card-name">{name}</span>
+    {role && <span class="player-card-role">{role}</span>}
   </div>
 </a>
 
 <style>
 .player-card {
-  display: inline-block;
+  display: block;
   text-decoration: none;
   background: var(--bg);
   border: 1px solid var(--line);
   overflow: hidden;
-  transition: border-color 0.3s;
-  width: 80px;
-}
-
-@media (min-width: 640px) {
-  .player-card { width: 72px; }
-}
-@media (min-width: 768px) {
-  .player-card { width: 84px; }
-}
-@media (min-width: 1024px) {
-  .player-card { width: 96px; }
+  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  position: relative;
 }
 
 .player-card:hover {
   border-color: var(--red);
+  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
 }
 
 .player-card-img {
   overflow: hidden;
   aspect-ratio: 3/4;
+  position: relative;
+  background: var(--bg-2);
 }
 
 .player-card-img img {
@@ -53,20 +50,36 @@ const {name , id } = Astro.props
   transition: transform 0.5s cubic-bezier(.2,.7,.2,1), filter 0.4s;
 }
 
+.player-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(14,14,14,0.18) 0%, transparent 50%);
+  transition: opacity 0.3s;
+}
+
 .player-card:hover .player-card-img img {
   transform: scale(1.06);
   filter: grayscale(0);
 }
 
+.player-card:hover .player-card-overlay {
+  opacity: 0;
+}
+
 .player-card-info {
-  padding: 6px 8px;
+  padding: 10px 12px;
   border-top: 1px solid var(--line);
+  transition: border-color 0.25s;
+}
+
+.player-card:hover .player-card-info {
+  border-color: var(--red);
 }
 
 .player-card-name {
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
-  font-size: 11px;
+  font-size: 13px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--ink);
@@ -74,5 +87,16 @@ const {name , id } = Astro.props
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.player-card-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  margin-top: 5px;
+  display: block;
 }
 </style>

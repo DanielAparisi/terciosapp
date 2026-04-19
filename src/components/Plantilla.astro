@@ -1,83 +1,178 @@
 ---
 import  { DEFENSAS, DELANTERO, MEDIOCENTRO, PORTERO, PRESIDENTE } from "../const/player.astro"
 import PlayerCard from "./PlayerCard.astro"
+
+const totalJugadores = PORTERO.length + DEFENSAS.length + MEDIOCENTRO.length + DELANTERO.length
+
+const positions = [
+  { index: "01", label: "Portero",        players: PORTERO     },
+  { index: "02", label: "Defensas",       players: DEFENSAS    },
+  { index: "03", label: "Mediocentros",   players: MEDIOCENTRO },
+  { index: "04", label: "Delanteros",     players: DELANTERO   },
+  { index: "05", label: "Presidente",     players: PRESIDENTE  },
+]
 ---
 
-<section id="Plantilla" style="padding:80px 0;background:var(--bg);">
-  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
+<section id="Plantilla" class="plantilla-section">
+  <div class="plantilla-inner">
+
     <!-- Section header -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
-      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">LA PLANTILLA</h2>
-      <span class="eyebrow" style="padding-bottom:8px;">Temporada 25·26</span>
-    </div>
-
-    <!-- Portero -->
-    <div style="margin-bottom:48px;">
-      <div class="pos-label">Portero</div>
-      <div class="players-row">
-        {PORTERO.map(({id, name, role }) => (
-          <PlayerCard id={id} name={name} role={role} />
-        ))}
+    <div class="plantilla-header">
+      <h2 class="plantilla-title">La Plantilla</h2>
+      <div class="plantilla-meta">
+        <span class="eyebrow">Temporada 25·26</span>
+        <span class="plantilla-count eyebrow">{totalJugadores} jugadores</span>
       </div>
     </div>
 
-    <!-- Defensas -->
-    <div style="margin-bottom:48px;">
-      <div class="pos-label">Defensas</div>
-      <div class="players-row">
-        {DEFENSAS.map(({id, name, role="Defensa"}) => (
-          <PlayerCard id={id} name={name} role={role} />
-        ))}
+    <!-- Position groups -->
+    {positions.map(({ index, label, players }) => (
+      <div class="pos-group">
+        <div class="pos-header">
+          <span class="pos-index">{index}</span>
+          <div class="pos-header-main">
+            <span class="pos-name">{label}</span>
+            <span class="pos-total">{players.length}</span>
+          </div>
+        </div>
+        <div class="players-grid">
+          {players.map(({ id, name, role }) => (
+            <PlayerCard id={id} name={name} role={role} />
+          ))}
+        </div>
       </div>
-    </div>
+    ))}
 
-    <!-- Mediocentros -->
-    <div style="margin-bottom:48px;">
-      <div class="pos-label">Mediocentros</div>
-      <div class="players-row">
-        {MEDIOCENTRO.map(({id, name, role="Mediocentro"}) => (
-          <PlayerCard id={id} name={name} role={role} />
-        ))}
-      </div>
-    </div>
-
-    <!-- Delanteros -->
-    <div style="margin-bottom:48px;">
-      <div class="pos-label">Delanteros</div>
-      <div class="players-row">
-        {DELANTERO.map(({id, name, role}) => (
-          <PlayerCard id={id} name={name} role={role} />
-        ))}
-      </div>
-    </div>
-
-    <!-- Presidente -->
-    <div style="margin-bottom:16px;">
-      <div class="pos-label">Presidente</div>
-      <div class="players-row">
-        {PRESIDENTE.map(({id, name, role}) => (
-          <PlayerCard id={id} name={name} role={role} />
-        ))}
-      </div>
-    </div>
   </div>
 </section>
 
 <style>
-.pos-label {
+.plantilla-section {
+  padding: 80px 0 100px;
+  background: var(--bg);
+}
+
+.plantilla-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .plantilla-inner { padding: 0 32px; }
+}
+
+@media (min-width: 1024px) {
+  .plantilla-inner { padding: 0 48px; }
+}
+
+/* Header */
+.plantilla-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 24px;
+  border-bottom: 2px solid var(--ink);
+  margin-bottom: 64px;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+.plantilla-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(52px, 7vw, 120px);
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--ink);
+  margin: 0;
+}
+
+.plantilla-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  padding-bottom: 6px;
+}
+
+.plantilla-count {
+  color: var(--red);
+}
+
+/* Position group */
+.pos-group {
+  margin-bottom: 56px;
+}
+
+.pos-group:last-child {
+  margin-bottom: 0;
+}
+
+/* Position header */
+.pos-header {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--line);
+}
+
+.pos-index {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--line);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.pos-header-main {
+  display: flex;
+  align-items: baseline;
+  gap: 12px;
+  flex: 1;
+}
+
+.pos-name {
   font-family: 'JetBrains Mono', monospace;
   font-size: 11px;
   letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--red);
-  margin-bottom: 16px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid var(--line);
+  font-weight: 500;
 }
-.players-row {
-  display: flex;
-  flex-wrap: wrap;
+
+.pos-total {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  color: var(--muted);
+  background: var(--bg-2);
+  border: 1px solid var(--line);
+  padding: 1px 7px;
+  line-height: 1.6;
+}
+
+/* Players grid */
+.players-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 8px;
-  justify-content: flex-start;
+}
+
+@media (min-width: 640px) {
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+    gap: 10px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .players-grid {
+    grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+    gap: 12px;
+  }
 }
 </style>

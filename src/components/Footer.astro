@@ -1,55 +1,55 @@
 ---
 import Mail from "./mail.astro";
 ---
-<footer id="Footer" style="border-top:1px solid var(--ink);padding:48px 0 24px;background:var(--bg);margin-top:80px;">
-  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
+<footer id="Footer" class="site-footer">
+  <div class="footer-inner">
     <div class="footer-top">
-      <div>
-        <div style="font-family:'Oswald',sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(40px,5vw,72px);line-height:0.9;color:var(--ink);">LOS<br>TERCIOS</div>
-        <p style="margin-top:16px;font-size:14px;color:var(--muted);max-width:280px;line-height:1.6;">Equipo de fútbol sala y fútbol 7. IES Campiña Alta · Est. 2023</p>
+      <div class="footer-brand">
+        <div class="footer-logo">LOS<br>TERCIOS</div>
+        <p class="footer-tagline">Equipo de fútbol sala y fútbol 7. IES Campiña Alta · Est. 2023</p>
       </div>
-      <div>
-        <h4 style="font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:0.1em;margin-bottom:16px;color:var(--muted);">Navegación</h4>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <a href="#Equipaciones" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Equipaciones</a>
-          <a href="#Plantilla" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Plantilla</a>
-          <a href="#Historia" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Historia</a>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Navegación</h4>
+        <div class="footer-links">
+          <a href="#Equipaciones" class="footer-link">Equipaciones</a>
+          <a href="#Plantilla" class="footer-link">Plantilla</a>
+          <a href="#Historia" class="footer-link">Historia</a>
         </div>
       </div>
-      <div>
-        <h4 style="font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:0.1em;margin-bottom:16px;color:var(--muted);">Legal</h4>
-        <div style="display:flex;flex-direction:column;gap:4px;">
-          <a href="#" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Sobre</a>
-          <a href="#" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Políticas</a>
-          <a href="#" style="font-size:14px;color:var(--ink);text-decoration:none;padding:6px 0;border-bottom:1px solid var(--line);">Licencia</a>
+      <div class="footer-col">
+        <h4 class="footer-col-title">Legal</h4>
+        <div class="footer-links">
+          <a href="#" class="footer-link">Sobre</a>
+          <a href="#" class="footer-link">Políticas</a>
+          <a href="#" class="footer-link">Licencia</a>
         </div>
       </div>
-      <div>
-        <h4 style="font-family:'Oswald',sans-serif;font-weight:600;text-transform:uppercase;font-size:13px;letter-spacing:0.1em;margin-bottom:16px;color:var(--muted);">Síguenos</h4>
-        <div style="display:flex;flex-direction:column;gap:8px;">
+      <div class="footer-col">
+        <h4 class="footer-col-title">Síguenos</h4>
+        <div class="footer-socials">
           <a href="#" class="soc-link">
-            <img src="/youtube-color.svg" alt="YouTube" style="width:18px;height:18px;object-fit:contain;" />
+            <img src="/youtube-color.svg" alt="YouTube" class="icon-dark" />
             <span>YouTube</span>
           </a>
           <a href="#" class="soc-link">
-            <img src="/instagram-1.svg" alt="Instagram" style="width:18px;height:18px;object-fit:contain;" />
+            <img src="/instagram-1.svg" alt="Instagram" class="icon-color" />
             <span>Instagram</span>
           </a>
           <a href="#" class="soc-link">
-            <img src="/tiktok-color.svg" alt="TikTok" style="width:18px;height:18px;object-fit:contain;" />
+            <img src="/tiktok-color.svg" alt="TikTok" class="icon-color" />
             <span>TikTok</span>
           </a>
           <a href="#" class="soc-link">
-            <img src="/spotify-color.svg" alt="Spotify" style="width:18px;height:18px;object-fit:contain;" />
+            <img src="/spotify-color.svg" alt="Spotify" class="icon-dark" />
             <span>Spotify</span>
           </a>
         </div>
       </div>
     </div>
 
-    <div style="display:flex;justify-content:space-between;align-items:center;font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.2em;text-transform:uppercase;color:var(--muted);padding-top:24px;border-top:1px solid var(--line);flex-wrap:wrap;gap:12px;">
+    <div class="footer-bottom">
       <span>© 2025 Los Tercios FC · Todos los derechos reservados</span>
-      <a href="#" style="color:var(--muted);text-decoration:none;display:flex;align-items:center;gap:8px;">
+      <a href="#" class="footer-contact">
         <Mail/>
         Contacto
       </a>
@@ -58,23 +58,115 @@ import Mail from "./mail.astro";
 </footer>
 
 <style>
+.site-footer {
+  border-top: 1px solid var(--ink);
+  padding: 40px 0 24px;
+  background: var(--bg);
+  margin-top: 80px;
+}
+
+@media (min-width: 768px) {
+  .site-footer { padding: 48px 0 24px; }
+}
+
+.footer-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .footer-inner { padding: 0 32px; }
+}
+
+@media (min-width: 1024px) {
+  .footer-inner { padding: 0 48px; }
+}
+
+/* Top grid */
 .footer-top {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr 1fr;
-  gap: 32px;
+  grid-template-columns: 1fr 1fr;
+  gap: 32px 24px;
   padding-bottom: 32px;
 }
 
-@media (max-width: 900px) {
+@media (min-width: 768px) {
   .footer-top {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 32px;
   }
 }
 
-@media (max-width: 480px) {
-  .footer-top {
-    grid-template-columns: 1fr;
+/* Brand */
+.footer-brand {
+  grid-column: 1 / -1;
+}
+
+@media (min-width: 768px) {
+  .footer-brand {
+    grid-column: auto;
   }
+}
+
+.footer-logo {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: clamp(32px, 5vw, 72px);
+  line-height: 0.9;
+  color: var(--ink);
+}
+
+.footer-tagline {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--muted);
+  max-width: 260px;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
+
+/* Columns */
+.footer-col-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  margin-bottom: 14px;
+  color: var(--muted);
+  line-height: 1;
+}
+
+.footer-links {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.footer-link {
+  font-size: 14px;
+  color: var(--ink);
+  text-decoration: none;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--line);
+  transition: color 0.2s;
+}
+
+.footer-link:last-child {
+  border-bottom: none;
+}
+
+.footer-link:hover {
+  color: var(--red);
+}
+
+/* Socials */
+.footer-socials {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .soc-link {
@@ -82,7 +174,7 @@ import Mail from "./mail.astro";
   align-items: center;
   gap: 10px;
   padding: 8px 12px;
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   background: var(--bg);
   text-decoration: none;
   color: var(--ink);
@@ -91,15 +183,64 @@ import Mail from "./mail.astro";
   text-transform: uppercase;
   font-size: 13px;
   letter-spacing: 0.04em;
-  transition: all 0.25s;
+  transition: background 0.25s ease, border-color 0.25s ease, color 0.25s ease;
+}
+
+.soc-link img {
+  width: 18px;
+  height: 18px;
+  object-fit: contain;
+  flex-shrink: 0;
+  transition: filter 0.25s ease;
 }
 
 .soc-link:hover {
   background: var(--ink);
+  border-color: var(--ink);
   color: var(--bg);
 }
 
-.soc-link:hover img {
-  filter: invert(1) brightness(2);
+/* Iconos con fondo transparente y relleno oscuro → se convierten a blanco */
+.soc-link:hover .icon-dark {
+  filter: brightness(0) invert(1);
+}
+
+/* Iconos con fondo/gradiente de color → se muestran con brillo aumentado */
+.soc-link:hover .icon-color {
+  filter: saturate(1.2) brightness(1.3);
+}
+
+/* Bottom bar */
+.footer-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--muted);
+  padding-top: 20px;
+  border-top: 1px solid var(--line);
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 640px) {
+  .footer-bottom { font-size: 11px; }
+}
+
+.footer-contact {
+  color: var(--muted);
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-shrink: 0;
+  transition: color 0.2s;
+}
+
+.footer-contact:hover {
+  color: var(--red);
 }
 </style>

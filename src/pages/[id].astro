@@ -1,34 +1,237 @@
 ---
-import PlayerCard from "../components/PlayerCard.astro";
 import Layout from "../layouts/Layout.astro";
 import { JUGADORES } from "../const/player.astro";
 
-// Exporta getStaticPaths para generar las rutas
 export async function getStaticPaths() {
   return JUGADORES.map(player => ({
     params: { id: player.id }
   }));
 }
 
-// Obtén el id de la URL
 const { id } = Astro.params;
-
-// Busca el jugador por id
 const player = JUGADORES.find(p => p.id === id);
 ---
 
-<Layout title={id} description="detalle de cada jugador">
-  <div class="flex flex-col items-center justify-center min-h-screen text-center">
-    {
-      player ? (
-        <PlayerCard id={player.id} name={player.name} role={player.role} />
-      ) : (
-        <p>Jugador no encontrado</p>
-      )
-    }
-    <h1 class="mt-4 text-2xl font-bold">{player?.name}</h1>
-    <h2 class="text-lg text-gray-600">{player?.role}</h2>
-    
-    <a href="/Plantilla"><button type="button" class="text-red-700 hover:text-white border border-red-700 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900 cursor-pointer">Volver</button></a>
-  </div>
+<Layout title={player ? player.name : "Jugador"} description={player ? `Perfil de ${player.name}` : "Jugador no encontrado"}>
+  {player ? (
+    <main class="player-page">
+      <div class="player-page-inner">
+
+        <div class="player-photo-col">
+          <div class="player-photo-wrap">
+            <img
+              src={`/${player.id}.png`}
+              alt={player.name}
+              class="player-photo"
+            />
+          </div>
+        </div>
+
+        <div class="player-info-col">
+          <div class="player-info-top">
+            <span class="eyebrow eyebrow--red player-role">{player.role}</span>
+            <h1 class="player-name">{player.name}</h1>
+            <div class="player-meta-row">
+              <span class="player-meta-item">
+                <span class="player-meta-label">Temporada</span>
+                <span class="player-meta-value">25·26</span>
+              </span>
+              <span class="player-meta-sep"></span>
+              <span class="player-meta-item">
+                <span class="player-meta-label">Equipo</span>
+                <span class="player-meta-value">Los Tercios FC</span>
+              </span>
+            </div>
+          </div>
+
+          <a href="/" class="back-btn">
+            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+              <path d="M8.5 2L3.5 7L8.5 12" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+            Volver a la plantilla
+          </a>
+        </div>
+
+      </div>
+    </main>
+  ) : (
+    <main class="not-found-page">
+      <p>Jugador no encontrado.</p>
+      <a href="/" class="back-btn">← Volver</a>
+    </main>
+  )}
 </Layout>
+
+<style>
+/* Player page */
+.player-page {
+  min-height: 100svh;
+  background: var(--bg);
+  display: flex;
+  align-items: stretch;
+}
+
+.player-page-inner {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .player-page-inner {
+    flex-direction: row;
+  }
+}
+
+/* Photo column */
+.player-photo-col {
+  flex: 1;
+  background: var(--bg-2);
+  border-right: 1px solid var(--line);
+  overflow: hidden;
+}
+
+.player-photo-wrap {
+  width: 100%;
+  aspect-ratio: 3/4;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .player-photo-wrap {
+    aspect-ratio: unset;
+    height: 100%;
+    min-height: 100svh;
+  }
+}
+
+.player-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* Info column */
+.player-info-col {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px 24px;
+  border-top: 1px solid var(--line);
+}
+
+@media (min-width: 768px) {
+  .player-info-col {
+    padding: 64px 48px;
+    border-top: none;
+    border-left: none;
+  }
+}
+
+@media (min-width: 1024px) {
+  .player-info-col {
+    padding: 80px 64px;
+  }
+}
+
+.player-info-top {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.player-role {
+  margin-bottom: 16px;
+  display: block;
+}
+
+.player-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 6vw, 96px);
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--ink);
+  margin: 0 0 32px;
+}
+
+.player-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding-top: 24px;
+  border-top: 1px solid var(--line);
+  flex-wrap: wrap;
+}
+
+.player-meta-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-meta-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+.player-meta-value {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+}
+
+.player-meta-sep {
+  width: 1px;
+  height: 32px;
+  background: var(--line);
+  flex-shrink: 0;
+}
+
+/* Back button */
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: 1px solid var(--ink);
+  background: transparent;
+  color: var(--ink);
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  font-size: 13px;
+  text-decoration: none;
+  transition: background 0.25s, color 0.25s;
+  align-self: flex-start;
+  margin-top: 40px;
+}
+
+.back-btn:hover {
+  background: var(--ink);
+  color: var(--bg);
+}
+
+/* Not found */
+.not-found-page {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  padding: 40px 20px;
+}
+</style>

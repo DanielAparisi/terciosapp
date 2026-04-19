@@ -1,12 +1,10 @@
-<section id="Equipaciones" style="padding:80px 0;background:var(--bg);">
-  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
-    <!-- Section header -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
-      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">EQUIPACIONES</h2>
-      <span class="eyebrow" style="padding-bottom:8px;">Temporada 25·26</span>
+<section id="Equipaciones" class="equip-section">
+  <div class="equip-inner">
+    <div class="section-hd">
+      <h2 class="section-hd-title">EQUIPACIONES</h2>
+      <span class="eyebrow section-hd-eyebrow">Temporada 25·26</span>
     </div>
 
-    <!-- Kits grid -->
     <div class="kits-grid">
       <div class="kit-item">
         <div class="kit-img-wrap">
@@ -67,22 +65,74 @@
 </section>
 
 <style>
+.equip-section {
+  padding: 64px 0;
+  background: var(--bg);
+}
+
+@media (min-width: 768px) {
+  .equip-section { padding: 80px 0; }
+}
+
+.equip-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .equip-inner { padding: 0 32px; }
+}
+
+@media (min-width: 1024px) {
+  .equip-inner { padding: 0 48px; }
+}
+
+/* Section header */
+.section-hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 40px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .section-hd {
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+  }
+}
+
+.section-hd-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 120px);
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--ink);
+  margin: 0;
+}
+
+.section-hd-eyebrow {
+  padding-bottom: 6px;
+  flex-shrink: 0;
+}
+
+/* Kits grid */
 .kits-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(2, 1fr);
   gap: 2px;
   background: var(--ink);
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .kits-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .kits-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
@@ -113,11 +163,15 @@
 }
 
 .kit-label {
-  padding: 14px 16px;
+  padding: 10px 12px;
   border-top: 1px solid var(--line);
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
+}
+
+@media (min-width: 640px) {
+  .kit-label { padding: 14px 16px; }
 }
 
 .kit-tag {
@@ -126,6 +180,7 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--red);
+  flex-shrink: 0;
 }
 
 .kit-name {
@@ -133,7 +188,14 @@
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  font-size: 13px;
+  font-size: 12px;
   color: var(--ink);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@media (min-width: 640px) {
+  .kit-name { font-size: 13px; }
 }
 </style>

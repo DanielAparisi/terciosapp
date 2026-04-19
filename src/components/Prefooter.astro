@@ -2,27 +2,26 @@
 
 ---
 
-<section id="Patrocinadores" style="padding:80px 0;background:var(--bg-2);">
-  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
-    <!-- Section header -->
-    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
-      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">PATROCINADORES</h2>
-      <span class="eyebrow" style="padding-bottom:8px;">Temporada 25·26</span>
+<section id="Patrocinadores" class="sponsors-section">
+  <div class="sponsors-inner">
+    <div class="section-hd">
+      <h2 class="section-hd-title">PATROCINADORES</h2>
+      <span class="eyebrow section-hd-eyebrow">Temporada 25·26</span>
     </div>
 
     <div class="sponsors-grid">
       <div class="sponsor-item">
-        <img src="/tecnocasa.svg" alt="Tecnocasa" />
+        <img src="/tecnocasa.svg" alt="Tecnocasa" class="img-tecnocasa" />
         <span class="sponsor-name">Tecnocasa</span>
         <span class="sponsor-kind">Patrocinador oficial</span>
       </div>
       <div class="sponsor-item">
-        <img src="/LaneFit.jpg" alt="LaneFit" />
+        <img src="/LaneFit.jpg" alt="LaneFit" class="img-color" />
         <span class="sponsor-name">LaneFit</span>
         <span class="sponsor-kind">Patrocinador</span>
       </div>
       <div class="sponsor-item">
-        <img src="/Zentral.jpeg" alt="Zentral" />
+        <img src="/Zentral.jpeg" alt="Zentral" class="img-color" />
         <span class="sponsor-name">Zentral</span>
         <span class="sponsor-kind">Patrocinador</span>
       </div>
@@ -31,74 +30,140 @@
 </section>
 
 <style>
+.sponsors-section {
+  padding: 64px 0;
+  background: var(--bg-2);
+}
+
+@media (min-width: 768px) {
+  .sponsors-section { padding: 80px 0; }
+}
+
+.sponsors-inner {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+@media (min-width: 640px) {
+  .sponsors-inner { padding: 0 32px; }
+}
+
+@media (min-width: 1024px) {
+  .sponsors-inner { padding: 0 48px; }
+}
+
+/* Section header */
+.section-hd {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--ink);
+  margin-bottom: 40px;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+@media (min-width: 768px) {
+  .section-hd {
+    padding-bottom: 24px;
+    margin-bottom: 48px;
+  }
+}
+
+.section-hd-title {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  font-size: clamp(40px, 7vw, 120px);
+  text-transform: uppercase;
+  line-height: 0.88;
+  color: var(--ink);
+  margin: 0;
+}
+
+.section-hd-eyebrow {
+  padding-bottom: 6px;
+  flex-shrink: 0;
+}
+
+/* Sponsors grid */
 .sponsors-grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: 1fr;
   gap: 12px;
 }
 
-@media (max-width: 640px) {
+@media (min-width: 480px) {
   .sponsors-grid {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
 .sponsor-item {
-  border: 1px solid var(--ink);
+  border: 1px solid var(--line);
   background: var(--bg);
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: 40px 24px 24px;
-  gap: 12px;
+  padding: 32px 24px 20px;
+  gap: 10px;
   cursor: pointer;
-  transition: background 0.35s;
-  position: relative;
-  overflow: hidden;
+  transition: background 0.3s ease, border-color 0.3s ease;
 }
 
-.sponsor-item::before {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: repeating-linear-gradient(45deg, rgba(14,14,14,0.025) 0 2px, transparent 2px 12px);
-  transition: opacity 0.4s;
+@media (min-width: 640px) {
+  .sponsor-item { padding: 40px 24px 24px; }
 }
 
 .sponsor-item:hover {
   background: var(--ink);
-}
-
-.sponsor-item:hover::before {
-  opacity: 0;
+  border-color: var(--ink);
 }
 
 .sponsor-item img {
-  max-height: 64px;
+  max-height: 56px;
   max-width: 70%;
   object-fit: contain;
-  filter: grayscale(1) contrast(0.9);
-  opacity: 0.8;
-  transition: filter 0.4s, opacity 0.4s;
-  position: relative;
-  z-index: 1;
+  transition: filter 0.3s ease;
 }
 
-.sponsor-item:hover img {
-  filter: grayscale(0) contrast(1) brightness(1.1) invert(1);
-  opacity: 1;
+@media (min-width: 640px) {
+  .sponsor-item img { max-height: 64px; }
+}
+
+/* Tecnocasa: verde oscuro */
+.img-tecnocasa {
+  filter: brightness(0) sepia(1) hue-rotate(80deg) saturate(3) brightness(0.45);
+}
+
+/* LaneFit y Zentral: color original */
+.img-color {
+  filter: none;
+}
+
+/* Tecnocasa (SVG con relleno oscuro) → blanco */
+.sponsor-item:hover .img-tecnocasa {
+  filter: brightness(0) invert(1);
+}
+
+/* LaneFit y Zentral (fotos JPG) → se muestran con brillo aumentado */
+.sponsor-item:hover .img-color {
+  filter: brightness(1.15) saturate(1.1) contrast(1.05);
 }
 
 .sponsor-name {
   font-family: 'Oswald', sans-serif;
   font-weight: 700;
   text-transform: uppercase;
-  font-size: 18px;
+  font-size: 16px;
   color: var(--ink);
-  position: relative;
-  z-index: 1;
-  transition: color 0.35s;
+  transition: color 0.3s ease;
+}
+
+@media (min-width: 640px) {
+  .sponsor-name { font-size: 18px; }
 }
 
 .sponsor-item:hover .sponsor-name {
@@ -111,12 +176,10 @@
   letter-spacing: 0.2em;
   text-transform: uppercase;
   color: var(--muted);
-  position: relative;
-  z-index: 1;
-  transition: color 0.35s;
+  transition: color 0.3s ease;
 }
 
 .sponsor-item:hover .sponsor-kind {
-  color: rgba(255,255,255,0.6);
+  color: rgba(255,255,255,0.5);
 }
 </style>
