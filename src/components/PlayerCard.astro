@@ -9,11 +9,14 @@ const {name, id, role} = Astro.props
       decoding="async"
       loading="lazy"
     />
-    <div class="player-card-overlay"></div>
+    <div class="player-card-overlay">
+      <span class="overlay-role">{role}</span>
+      <span class="overlay-name">{name}</span>
+    </div>
   </div>
+  <!-- nombre visible siempre en móvil -->
   <div class="player-card-info">
     <span class="player-card-name">{name}</span>
-    {role && <span class="player-card-role">{role}</span>}
   </div>
 </a>
 
@@ -21,19 +24,19 @@ const {name, id, role} = Astro.props
 .player-card {
   display: block;
   text-decoration: none;
-  background: var(--bg);
+  background: var(--bg-2);
   border: 1px solid var(--line);
   overflow: hidden;
-  transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease;
+  transition: border-color 0.25s ease, transform 0.25s ease;
   position: relative;
 }
 
 .player-card:hover {
   border-color: var(--red);
-  box-shadow: 0 8px 24px rgba(0,0,0,0.08);
   transform: translateY(-3px);
 }
 
+/* Foto */
 .player-card-img {
   overflow: hidden;
   aspect-ratio: 3/4;
@@ -46,28 +49,56 @@ const {name, id, role} = Astro.props
   height: 100%;
   object-fit: cover;
   display: block;
-  filter: grayscale(0.2);
-  transition: transform 0.5s cubic-bezier(.2,.7,.2,1), filter 0.4s;
-}
-
-.player-card-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(14,14,14,0.18) 0%, transparent 50%);
-  transition: opacity 0.3s;
+  transition: transform 0.5s cubic-bezier(.2,.7,.2,1);
 }
 
 .player-card:hover .player-card-img img {
-  transform: scale(1.06);
-  filter: grayscale(0);
+  transform: scale(1.07);
+}
+
+/* Overlay */
+.player-card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to top, rgba(10,10,10,0.88) 0%, rgba(10,10,10,0.2) 45%, transparent 70%);
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 12px 10px;
+  opacity: 0;
+  transform: translateY(6px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .player-card:hover .player-card-overlay {
-  opacity: 0;
+  opacity: 1;
+  transform: translateY(0);
 }
 
+.overlay-role {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 8px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--red);
+  display: block;
+  margin-bottom: 4px;
+}
+
+.overlay-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #fff;
+  display: block;
+  line-height: 1.1;
+}
+
+/* Nombre siempre visible en móvil (sin hover) */
 .player-card-info {
-  padding: 10px 12px;
+  padding: 8px 10px;
   border-top: 1px solid var(--line);
   transition: border-color 0.25s;
 }
@@ -79,7 +110,7 @@ const {name, id, role} = Astro.props
 .player-card-name {
   font-family: 'Oswald', sans-serif;
   font-weight: 600;
-  font-size: 13px;
+  font-size: 11px;
   text-transform: uppercase;
   letter-spacing: 0.04em;
   color: var(--ink);
@@ -90,13 +121,10 @@ const {name, id, role} = Astro.props
   line-height: 1.2;
 }
 
-.player-card-role {
-  font-family: 'JetBrains Mono', monospace;
-  font-size: 9px;
-  letter-spacing: 0.18em;
-  text-transform: uppercase;
-  color: var(--muted);
-  margin-top: 5px;
-  display: block;
+/* En desktop ocultamos la barra inferior (el overlay la sustituye) */
+@media (hover: hover) {
+  .player-card-info {
+    display: none;
+  }
 }
 </style>
