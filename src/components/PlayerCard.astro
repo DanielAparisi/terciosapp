@@ -1,12 +1,78 @@
 ---
 const {name , id } = Astro.props
 ---
- <a href={`/${id}`} class=" inline-block transition hover:scale-125 w-25 sm:w-14 md:w-16 lg:w-20 group relative"  >
-        <img 
-            class=" aspect-[900/1200px] w-full h-full object-cover"
-            src={`/${id}.png`} 
-            alt={name} 
-            decoding="async">
-        <img/>
- </a>
+<a href={`/${id}`} class="player-card">
+  <div class="player-card-img">
+    <img
+      src={`/${id}.png`}
+      alt={name}
+      decoding="async"
+    />
+  </div>
+  <div class="player-card-info">
+    <span class="player-card-name">{name}</span>
+  </div>
+</a>
 
+<style>
+.player-card {
+  display: inline-block;
+  text-decoration: none;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  overflow: hidden;
+  transition: border-color 0.3s;
+  width: 80px;
+}
+
+@media (min-width: 640px) {
+  .player-card { width: 72px; }
+}
+@media (min-width: 768px) {
+  .player-card { width: 84px; }
+}
+@media (min-width: 1024px) {
+  .player-card { width: 96px; }
+}
+
+.player-card:hover {
+  border-color: var(--red);
+}
+
+.player-card-img {
+  overflow: hidden;
+  aspect-ratio: 3/4;
+}
+
+.player-card-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  filter: grayscale(0.2);
+  transition: transform 0.5s cubic-bezier(.2,.7,.2,1), filter 0.4s;
+}
+
+.player-card:hover .player-card-img img {
+  transform: scale(1.06);
+  filter: grayscale(0);
+}
+
+.player-card-info {
+  padding: 6px 8px;
+  border-top: 1px solid var(--line);
+}
+
+.player-card-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 600;
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  display: block;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+</style>

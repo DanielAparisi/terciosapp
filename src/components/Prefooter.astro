@@ -2,25 +2,121 @@
 
 ---
 
-<section id="Patrocinadores" class="py-12 px-2 sm:px-4">
-    <div class="flex items-center gap-4 mb-6 justify-center">
-        <h1 class="text-3xl font-bold text-red-800"> Patrocinadores</h1>
+<section id="Patrocinadores" style="padding:80px 0;background:var(--bg-2);">
+  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
+    <!-- Section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">PATROCINADORES</h2>
+      <span class="eyebrow" style="padding-bottom:8px;">Temporada 25·26</span>
     </div>
-    <article class="flex flex-row xs:flex-col flex-wrap justify-center items-center gap-6 sm:gap-8 w-full">
-        <img 
-            class="w-20 h-20 sm:w-24 sm:h-24 object-contain hover:scale-110 transition-all duration-300 cursor-pointer bg-black" 
-            src="tecnocasa.svg"
-            alt="Tecnocasa"
-        />
-        <img 
-            class="w-20 h-20 sm:w-24 sm:h-24 object-contain hover:scale-110 transition-all duration-300 cursor-pointer" 
-            src="LaneFit.jpg"
-            alt="LaneFit"
-        />
-        <img 
-            class="w-20 h-20 sm:w-24 sm:h-24 object-contain hover:scale-110 transition-all duration-300 cursor-pointer" 
-            src="Zentral.jpeg"
-            alt="Zentral"
-        />
-    </article>
+
+    <div class="sponsors-grid">
+      <div class="sponsor-item">
+        <img src="/tecnocasa.svg" alt="Tecnocasa" />
+        <span class="sponsor-name">Tecnocasa</span>
+        <span class="sponsor-kind">Patrocinador oficial</span>
+      </div>
+      <div class="sponsor-item">
+        <img src="/LaneFit.jpg" alt="LaneFit" />
+        <span class="sponsor-name">LaneFit</span>
+        <span class="sponsor-kind">Patrocinador</span>
+      </div>
+      <div class="sponsor-item">
+        <img src="/Zentral.jpeg" alt="Zentral" />
+        <span class="sponsor-name">Zentral</span>
+        <span class="sponsor-kind">Patrocinador</span>
+      </div>
+    </div>
+  </div>
 </section>
+
+<style>
+.sponsors-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 12px;
+}
+
+@media (max-width: 640px) {
+  .sponsors-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.sponsor-item {
+  border: 1px solid var(--ink);
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 24px 24px;
+  gap: 12px;
+  cursor: pointer;
+  transition: background 0.35s;
+  position: relative;
+  overflow: hidden;
+}
+
+.sponsor-item::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: repeating-linear-gradient(45deg, rgba(14,14,14,0.025) 0 2px, transparent 2px 12px);
+  transition: opacity 0.4s;
+}
+
+.sponsor-item:hover {
+  background: var(--ink);
+}
+
+.sponsor-item:hover::before {
+  opacity: 0;
+}
+
+.sponsor-item img {
+  max-height: 64px;
+  max-width: 70%;
+  object-fit: contain;
+  filter: grayscale(1) contrast(0.9);
+  opacity: 0.8;
+  transition: filter 0.4s, opacity 0.4s;
+  position: relative;
+  z-index: 1;
+}
+
+.sponsor-item:hover img {
+  filter: grayscale(0) contrast(1) brightness(1.1) invert(1);
+  opacity: 1;
+}
+
+.sponsor-name {
+  font-family: 'Oswald', sans-serif;
+  font-weight: 700;
+  text-transform: uppercase;
+  font-size: 18px;
+  color: var(--ink);
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s;
+}
+
+.sponsor-item:hover .sponsor-name {
+  color: #fff;
+}
+
+.sponsor-kind {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 9px;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted);
+  position: relative;
+  z-index: 1;
+  transition: color 0.35s;
+}
+
+.sponsor-item:hover .sponsor-kind {
+  color: rgba(255,255,255,0.6);
+}
+</style>

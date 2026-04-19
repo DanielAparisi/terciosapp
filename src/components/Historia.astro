@@ -1,38 +1,44 @@
 
-<br><br/>
-<section id="Historia" class="py-8 px-2 sm:py-12 sm:px-4">
-    <div class="flex items-center gap-4 mb-6 justify-center">
-        <h1 class="text-2xl sm:text-3xl font-bold text-red-800">HISTORIA</h1>
+<section id="Historia" style="padding:80px 0;background:var(--bg-2);">
+  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
+    <!-- Section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">HISTORIA</h2>
+      <span class="eyebrow" style="padding-bottom:8px;">Est. 2023</span>
     </div>
-    <article class="flex flex-col md:flex-row w-full items-center gap-6">
-        <div class="w-full md:w-1/2 flex justify-end md:pr-6 mb-4 md:mb-0">
-            <article class=" flex flex-col">
-            <p >
-              A finales del año 2023 nacía una liga de fútbol sala en el IES Campiña Alta de la cual surgiría la idea de crear el equipo Los Tercios Fútbol Club. El equipo en sus inicios no contaba con más de seis jugadores, los justos para poder competir. Durante todo el año el año se luchó y se mejoró para poder hacerse con la victoria hasta que por fin, el jueves 18 de abril de 2024 salimos vencedores.
-            </p>
-             <p >
-              A lo largo del veranl el equipo se estuvo reforzando con fichajes y entrenamientos, jugando torneos locales y asistiendo a eventos de presentación para comenzar una aventura nueva, jugar en una liga de fútbol 7. En la pretemporada, el equipo experimentó una de sus mejores versiones, que se vería interrumpida por un mal comienzo de temporada. Durante el inicio de la 2024/2025 el equipo tuvo un gran proceso de recuperación, cambios y mejora de mentalidad, que daría sus frutos tras el parón de Navidad. Desde entonces, el equipo ha ido hacia arriba, quedando terceros en la tabla y subiendo a primera división de la presente liga.
-            </p>
-             <p >
-             Esta nueva temporada presenta grandes retos y nuevos jugadores. El equipo ha tenido un gran cambio y busca tener gran éxito tanto en primera división, con el equipo que jugó el año pasado, como una nueva división llamada Los Tercios Fútbol Club Promesas, buscando hacer su historia también.
-            </p>
 
-            </article>
-            
+    <article style="display:grid;grid-template-columns:1fr;gap:48px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start;" class="historia-grid">
+        <div>
+          <p>
+            A finales del año 2023 nacía una liga de fútbol sala en el IES Campiña Alta de la cual surgiría la idea de crear el equipo Los Tercios Fútbol Club. El equipo en sus inicios no contaba con más de seis jugadores, los justos para poder competir. Durante todo el año se luchó y se mejoró para poder hacerse con la victoria hasta que por fin, el jueves 18 de abril de 2024 salimos vencedores.
+          </p>
+          <p>
+            A lo largo del verano el equipo se estuvo reforzando con fichajes y entrenamientos, jugando torneos locales y asistiendo a eventos de presentación para comenzar una aventura nueva, jugar en una liga de fútbol 7. En la pretemporada, el equipo experimentó una de sus mejores versiones, que se vería interrumpida por un mal comienzo de temporada.
+          </p>
+          <p>
+            Durante el inicio de la 2024/2025 el equipo tuvo un gran proceso de recuperación, cambios y mejora de mentalidad, que daría sus frutos tras el parón de Navidad. Desde entonces, el equipo ha ido hacia arriba, quedando terceros en la tabla y subiendo a primera división de la presente liga.
+          </p>
+          <p>
+            Esta nueva temporada presenta grandes retos y nuevos jugadores. El equipo ha tenido un gran cambio y busca tener gran éxito tanto en primera división como en una nueva división llamada <strong>Los Tercios Fútbol Club Promesas</strong>.
+          </p>
         </div>
-        <div class="w-full md:w-1/2 flex justify-start">
-            <img
-                class="w-full max-w-xs sm:max-w-md md:max-w-full h-56 sm:h-80 md:h-[500px] object-cover rounded-[8px] shadow-lg"
-                src="/FotoInsti.jpg"
-                alt="Equipo de fútbol Los Tercios"
-            />
+        <div>
+          <img
+            style="width:100%;height:420px;object-fit:cover;"
+            src="/FotoInsti.jpg"
+            alt="Equipo de fútbol Los Tercios"
+          />
         </div>
+      </div>
     </article>
+  </div>
 </section>
 
 <style>
-    strong{
-        color: #9f0712;
-        font-weight: 700;
-    }
+@media (max-width: 768px) {
+  .historia-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
 </style>

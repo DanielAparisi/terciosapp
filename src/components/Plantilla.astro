@@ -3,62 +3,81 @@ import  { DEFENSAS, DELANTERO, MEDIOCENTRO, PORTERO, PRESIDENTE } from "../const
 import PlayerCard from "./PlayerCard.astro"
 ---
 
-<section id="Plantilla" class="py-12 px-2 sm:px-4">
-    <div class="flex items-center gap-4 mb-6 justify-center">
-         <h1 class="text-3xl font-bold text-red-800"> PLANTILLA</h1>
+<section id="Plantilla" style="padding:80px 0;background:var(--bg);">
+  <div style="max-width:1440px;margin:0 auto;padding:0 32px;">
+    <!-- Section header -->
+    <div style="display:flex;align-items:flex-end;justify-content:space-between;padding-bottom:24px;border-bottom:1px solid var(--ink);margin-bottom:48px;gap:24px;">
+      <h2 style="font-family:'Oswald',sans-serif;font-weight:700;font-size:clamp(56px,7vw,120px);text-transform:uppercase;line-height:0.88;color:var(--ink);">LA PLANTILLA</h2>
+      <span class="eyebrow" style="padding-bottom:8px;">Temporada 25·26</span>
     </div>
 
-    <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800">Portero</h3>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {
-                PORTERO.map(({id, name, role }) => (
-                    <PlayerCard id={id} name={name} role={role} />
-                ))
-            }
-        </div>
+    <!-- Portero -->
+    <div style="margin-bottom:48px;">
+      <div class="pos-label">Portero</div>
+      <div class="players-row">
+        {PORTERO.map(({id, name, role }) => (
+          <PlayerCard id={id} name={name} role={role} />
+        ))}
+      </div>
     </div>
 
-    <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800">Defensas</h3>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {
-                DEFENSAS.map(({id, name, role="Defensa"}) => (
-                    <PlayerCard id={id} name={name} role={role} />
-                ))
-            }
-        </div>
+    <!-- Defensas -->
+    <div style="margin-bottom:48px;">
+      <div class="pos-label">Defensas</div>
+      <div class="players-row">
+        {DEFENSAS.map(({id, name, role="Defensa"}) => (
+          <PlayerCard id={id} name={name} role={role} />
+        ))}
+      </div>
     </div>
 
-    <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800">Mediocentros</h3>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {
-                MEDIOCENTRO.map(({id, name, role="Mediocentro"}) => (
-                    <PlayerCard id={id} name={name} role={role} />
-                ))
-            }
-        </div>
+    <!-- Mediocentros -->
+    <div style="margin-bottom:48px;">
+      <div class="pos-label">Mediocentros</div>
+      <div class="players-row">
+        {MEDIOCENTRO.map(({id, name, role="Mediocentro"}) => (
+          <PlayerCard id={id} name={name} role={role} />
+        ))}
+      </div>
     </div>
 
-    <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800">Delanteros</h3>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {
-                DELANTERO.map(({id, name, role}) => (
-                    <PlayerCard id={id} name={name} role={role} />
-                ))
-            }
-        </div>
+    <!-- Delanteros -->
+    <div style="margin-bottom:48px;">
+      <div class="pos-label">Delanteros</div>
+      <div class="players-row">
+        {DELANTERO.map(({id, name, role}) => (
+          <PlayerCard id={id} name={name} role={role} />
+        ))}
+      </div>
     </div>
-     <div class="mb-6">
-        <h3 class="mb-2 flex items-center justify-center text-red-800">Presidente</h3>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
-            {
-                PRESIDENTE.map(({id, name, role}) => (
-                    <PlayerCard id={id} name={name} role={role} />
-                ))
-            }
-        </div>
+
+    <!-- Presidente -->
+    <div style="margin-bottom:16px;">
+      <div class="pos-label">Presidente</div>
+      <div class="players-row">
+        {PRESIDENTE.map(({id, name, role}) => (
+          <PlayerCard id={id} name={name} role={role} />
+        ))}
+      </div>
     </div>
+  </div>
 </section>
+
+<style>
+.pos-label {
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--red);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+.players-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-start;
+}
+</style>
