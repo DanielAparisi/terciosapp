@@ -3,26 +3,32 @@ import Layout from "../layouts/Layout.astro";
 import { JUGADORES, STATS } from "../const/player.ts";
 import Groq from "groq-sdk";
 
+const MODELS = ["llama-3.3-70b-versatile", "gemma2-9b-it", "mixtral-8x7b-32768"];
+
 export async function getStaticPaths() {
-  const client = new Groq({ apiKey: import.meta.env.GROQ_API_KEY });
+  const apiKey = import.meta.env.GROQ_API_KEY;
 
   const paths = await Promise.all(
     JUGADORES.map(async (player) => {
       let bio = "";
-      try {
-        const message = await client.chat.completions.create({
-          model: "llama-3.3-70b-versatile",
-          max_tokens: 200,
-          messages: [
-            {
-              role: "user",
-              content: `Genera una pequeña biografía deportiva de 2-3 frases para ${player.name}, ${player.role} del equipo de fútbol sala Los Tercios FC en la temporada 25/26. El texto debe ser en español, motivador y en tercera persona. Solo devuelve el texto, sin introducción ni formato extra.`,
-            },
-          ],
-        });
-        bio = message.choices[0]?.message?.content ?? "";
-      } catch {
-        bio = "";
+      if (apiKey) {
+        try {
+          const client = new Groq({ apiKey });
+          const model = MODELS[Math.floor(Math.random() * MODELS.length)];
+          const message = await client.chat.completions.create({
+            model,
+            max_tokens: 200,
+            messages: [
+              {
+                role: "user",
+                content: `Genera una pequeña biografía deportiva de 2-3 frases para ${player.name}, ${player.role} del equipo de fútbol sala Los Tercios FC en la temporada 25/26. El texto debe ser en español, motivador y en tercera persona. Solo devuelve el texto, sin introducción ni formato extra.`,
+              },
+            ],
+          });
+          bio = message.choices[0]?.message?.content ?? "";
+        } catch {
+          bio = "";
+        }
       }
       const stats = STATS[player.id] ?? {
         partidos: 0,
